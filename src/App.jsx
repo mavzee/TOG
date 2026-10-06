@@ -29,8 +29,10 @@ function App() {
 
   const handleSidebarPointerLeave = () => {
     window.clearTimeout(sidebarOpenTimer.current);
-    sidebarOpenTimer.current = null;
-    setSidebarExpanded(false);
+    sidebarOpenTimer.current = window.setTimeout(() => {
+      setSidebarExpanded(false);
+      sidebarOpenTimer.current = null;
+    }, 200);
   };
 
   const addHeader = (header) => {
