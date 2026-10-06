@@ -1,0 +1,181 @@
+.files-page {
+  padding: 40px;
+}
+
+.files-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.files-header h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  color: #111827;
+}
+
+.files-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.export-button {
+  border: none;
+  background: #ef4524;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.export-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.export-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.select-all-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  padding: 15px 18px;
+  margin-bottom: 12px;
+}
+
+.select-all-row label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.selection-count {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.station-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.station-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  transition: 0.15s;
+}
+
+.station-row:hover {
+  border-color: #cbd5e1;
+}
+
+.station-row.selected {
+  border-color: #ef4524;
+  background: #fff8f6;
+}
+
+.station-select {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  cursor: pointer;
+}
+
+.station-select input,
+.select-all-row input {
+  width: 18px;
+  height: 18px;
+
+  accent-color: #ef4524;
+
+  cursor: pointer;
+}
+
+.station-info h3 {
+  margin: 0 0 5px;
+
+  font-size: 16px;
+
+  color: #111827;
+}
+
+.station-info p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+.delete-button {
+  border: none;
+
+  background: #fff0f0;
+
+  color: #c62828;
+
+  padding: 9px 14px;
+
+  border-radius: 7px;
+}
+
+.delete-button:hover {
+  background: #ffe0e0;
+}
+
+.files-loading,
+.files-empty {
+  background: white;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 10px;
+
+  padding: 50px;
+
+  text-align: center;
+
+  color: #6b7280;
+}
+
+@media (max-width: 700px) {
+  .files-page {
+    padding: 20px;
+  }
+
+  .files-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .export-button {
+    width: 100%;
+  }
+}

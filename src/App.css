@@ -1,0 +1,299 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f6f8;
+  color: #1d2430;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background: #161b22;
+  padding: 28px 18px;
+  color: white;
+}
+
+.sidebar h2 {
+  margin: 0 0 30px;
+}
+
+.sidebar button {
+  width: 100%;
+  border: 0;
+  padding: 13px 14px;
+  margin-bottom: 8px;
+  text-align: left;
+  border-radius: 8px;
+  background: transparent;
+  color: #d8dee9;
+}
+
+.sidebar button:hover,
+.sidebar button.active {
+  background: #2b313b;
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.page {
+  padding: 40px;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.page-heading h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.page-heading p {
+  margin: 0;
+  color: #697386;
+}
+
+.header-form {
+  display: flex;
+  gap: 10px;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.header-form input,
+.station-form input,
+.table-wrapper input {
+  width: 100%;
+  border: 1px solid #d7dce4;
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: white;
+}
+
+.header-form button,
+.primary-button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 18px;
+  background: #ef4524;
+  color: white;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.secondary-button {
+  border: 1px solid #cbd2dc;
+  border-radius: 8px;
+  padding: 11px 18px;
+  background: white;
+  color: #1d2430;
+  font-weight: 600;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(220px, 1fr)
+    );
+  gap: 12px;
+}
+
+.header-card {
+  background: white;
+  border: 1px solid #e1e5eb;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-card small {
+  color: #7b8492;
+}
+
+.header-card button {
+  border: 0;
+  background: none;
+  color: #d33;
+}
+
+.station-form {
+  display: grid;
+  grid-template-columns:
+    2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.station-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.search-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-box {
+  background: #fff0f0;
+  border: 1px solid #f0b2b2;
+  color: #a12626;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 18px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border: 1px solid #e1e5eb;
+  border-radius: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 900px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e6e9ee;
+  border-right: 1px solid #e6e9ee;
+  padding: 13px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f7f8fa;
+  font-size: 14px;
+}
+
+td:last-child,
+th:last-child {
+  border-right: 0;
+}
+
+.source-link {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+td small {
+  display: block;
+  margin-top: 5px;
+  color: #7b8492;
+}
+
+.station-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.station-card {
+  background: white;
+  border: 1px solid #e1e5eb;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.station-card h3 {
+  margin: 0 0 5px;
+}
+
+.station-card p {
+  margin: 0;
+  color: #697386;
+}
+
+.station-card button {
+  border: 0;
+  background: #fff0f0;
+  color: #c32828;
+  padding: 9px 14px;
+  border-radius: 7px;
+}
+
+.empty-state {
+  background: white;
+  border: 1px dashed #ccd2db;
+  border-radius: 10px;
+  padding: 50px;
+  text-align: center;
+  color: #7b8492;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    overflow-x: auto;
+  }
+
+  .sidebar h2 {
+    margin: 0 20px 0 0;
+    white-space: nowrap;
+  }
+
+  .sidebar button {
+    width: auto;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .station-form {
+    grid-template-columns: 1fr;
+  }
+
+  .page {
+    padding: 24px;
+  }
+}
