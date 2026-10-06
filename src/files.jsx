@@ -168,11 +168,10 @@ function Files() {
 
   return (
     <div className="files-page">
-
       <div className="files-header">
         <div>
-          <h1>Saved Fire Stations</h1>
-
+          <span className="eyebrow">RESEARCH WORKSPACE</span>
+          <h1>Saved fire stations</h1>
           <p>
             Select the fire stations you want to export.
           </p>
@@ -192,94 +191,79 @@ function Files() {
         </button>
       </div>
 
-      {!loading && stations.length > 0 && (
-        <div className="select-all-row">
-          <label>
-            <input
-              type="checkbox"
-              checked={allSelected}
-              onChange={selectAll}
-            />
+      <section className="files-content-card" aria-label="Saved stations">
+        {!loading && stations.length > 0 && (
+          <div className="select-all-row">
+            <label>
+              <input
+                type="checkbox"
+                checked={allSelected}
+                onChange={selectAll}
+              />
+              <span>Select all stations</span>
+            </label>
+            <span className="selection-count">
+              {selectedStations.length} of {stations.length} selected
+            </span>
+          </div>
+        )}
 
-            <span>Select All</span>
-          </label>
+        {loading ? (
+          <div className="files-loading">
+            Loading fire stations...
+          </div>
+        ) : stations.length === 0 ? (
+          <div className="files-empty">
+            <span className="files-empty-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="5" y="3.5" width="14" height="17" rx="2" />
+                <path d="M9 8h6M9 12h6M9 16h4" />
+              </svg>
+            </span>
+            <strong>No saved fire stations yet</strong>
+            <span>Stations you save from research will appear here.</span>
+          </div>
+        ) : (
+          <div className="station-list">
+            {stations.map((station, index) => {
+              const stationName = station["Fire Station"];
+              const selected = selectedStations.includes(stationName);
 
-          <span className="selection-count">
-            {selectedStations.length} of{" "}
-            {stations.length} selected
-          </span>
-        </div>
-      )}
-
-      {loading ? (
-        <div className="files-loading">
-          Loading fire stations...
-        </div>
-      ) : stations.length === 0 ? (
-        <div className="files-empty">
-          No saved fire stations yet.
-        </div>
-      ) : (
-        <div className="station-list">
-
-          {stations.map((station, index) => {
-            const stationName =
-              station["Fire Station"];
-
-            const selected =
-              selectedStations.includes(
-                stationName
-              );
-
-            return (
-              <div
-                key={stationName || index}
-                className={
-                  selected
-                    ? "station-row selected"
-                    : "station-row"
-                }
-              >
-                <label className="station-select">
-
-                  <input
-                    type="checkbox"
-                    checked={selected}
-                    onChange={() =>
-                      toggleStation(stationName)
-                    }
-                  />
-
-                  <div className="station-info">
-                    <h3>
-                      {stationName}
-                    </h3>
-
-                    <p>
-                      {station.City || "Unknown City"}
-
-                      {station.State
-                        ? `, ${station.State}`
-                        : ""}
-                    </p>
-                  </div>
-
-                </label>
-
-                <button
-                  className="delete-button"
-                  onClick={() =>
-                    deleteStation(stationName)
+              return (
+                <div
+                  key={stationName || index}
+                  className={
+                    selected
+                      ? "station-row selected"
+                      : "station-row"
                   }
                 >
-                  Delete
-                </button>
-              </div>
-            );
-          })}
-
-        </div>
-      )}
+                  <label className="station-select">
+                    <input
+                      type="checkbox"
+                      checked={selected}
+                      onChange={() => toggleStation(stationName)}
+                    />
+                    <div className="station-info">
+                      <h3>{stationName}</h3>
+                      <p>
+                        {station.City || "Unknown City"}
+                        {station.State ? `, ${station.State}` : ""}
+                      </p>
+                    </div>
+                  </label>
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteStation(stationName)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
 
     </div>
   );
